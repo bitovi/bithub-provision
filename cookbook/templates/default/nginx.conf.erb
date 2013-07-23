@@ -1,0 +1,33 @@
+server {
+	listen *:80;
+	server_name bithub.dev;
+
+	access_log /var/log/nginx/bithub.dev.access.log;
+	error_log  /var/log/nginx/bithub.dev.error.log;
+
+	index index.html index.htm;
+	root /vagrant/client/;
+	
+	location ~ /(api|admin) {
+		proxy_pass http://unix:/vagrant/web/tmp/sockets/unicorn.sock;
+		proxy_set_header Host $host;
+		proxy_redirect off;
+	}
+
+	# To make sure any assets can get through
+	location /bithub {
+		try_files $uri @rewrites_dev;
+	}
+	location / {
+		try_files $uri @rewrites_prod;
+	}
+	
+
+	# If no asset matches, send it to your javascript app. Hopefully it's a route in the app!
+	location @rewrites_dev {
+		rewrite ^/(.+)$ /bithub/index.html last;
+	}
+	location @rewrites_prod {
+		rewrite ^/(.+)$ /index.html last;
+	}
+}
