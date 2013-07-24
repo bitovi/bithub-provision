@@ -26,6 +26,6 @@ rabbitmq_user node[:bithub][:broker][:username] do
 end
 
 rabbitmq_user node[:bithub][:broker][:username] do
-  tag "user"
+  tag "monitoring"
   action :set_tags
 end
