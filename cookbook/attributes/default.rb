@@ -1,11 +1,21 @@
 default[:bithub][:user] = "bithub"
 default[:bithub][:group] = "bithub"
 default[:bithub][:name] = "bithub"
-default[:bithub][:config] = "bithub.conf"
-default[:bithub][:document_root] = "/vagrant/client"
+
+# Locale
+default[:locale][:lang]= "en_US.UTF-8"
+default[:locale][:language]= "en_US.UTF-8"
+default[:locale][:lc_all]= "en_US.UTF-8"
 
 # Webserver - nginx
 default[:bithub][:webserver][:conf_file] = 'bithub.dev.conf'
+default[:bithub][:webserver][:document_root] = "/vagrant/client"
+
+# Backend service - unicorn
+default[:bithub][:backend][:config] = "/usr/local/etc/unicorn.rb"
+default[:bithub][:backend][:socket] = "/tmp/unicorn.sock"
+default[:bithub][:backend][:pid] = "/tmp/unicorn.pid"
+default[:bithub][:backend][:log] = "/var/log/unicorn.log"
 
 # Broker - rabbitmq
 default[:bithub][:broker][:host] = 'localhost'
@@ -20,7 +30,7 @@ default[:bithub][:database][:username] = 'bithub'
 default[:bithub][:database][:password] = 'negativ1Q'
 default[:bithub][:database][:dbname] = 'bithub_development'
 
-# PLs - ruby
+# Langs - ruby
 default[:bithub][:pls][:ruby_version] = '1.9.3-p392'
 
 # Apps
