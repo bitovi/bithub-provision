@@ -1,5 +1,6 @@
 include_recipe "postgresql"
 include_recipe "postgresql::server"
+include_recipe "postgresql::contrib"
 include_recipe "database::postgresql"
 
 node.set['postgresql']['version'] = '9.1'
