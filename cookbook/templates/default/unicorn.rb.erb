@@ -6,11 +6,11 @@ preload_app true
 listen "unix:<%= node[:bithub][:backend][:socket] %>", :backlog => 64
 
 # PID
-pid node[:bithub][:backend][:pid]
+pid "<%= node[:bithub][:backend][:pid] %>"
 
 # Logs
-stderr_path node[:bithub][:backend][:log]
-stdout_path node[:bithub][:backend][:log]
+stderr_path "<%= node[:bithub][:backend][:log] %>"
+stdout_path "<%= node[:bithub][:backend][:log] %>"
 
 before_fork do |server, worker|
   if defined?(ActiveRecord::Base)
