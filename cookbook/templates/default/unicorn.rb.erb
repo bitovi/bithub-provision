@@ -1,0 +1,33 @@
+worker_processes 2
+timeout 30
+preload_app true
+
+# Socket
+listen "unix:<%= node[:bithub][:backend][:socket] %>", :backlog => 64
+
+# PID
+pid node[:bithub][:backend][:pid]
+
+# Logs
+stderr_path node[:bithub][:backend][:log]
+stdout_path node[:bithub][:backend][:log]
+
+before_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+    Rails.logger.info('Disconnected from ActiveRecord')
+  end
+  sleep 1
+end
+
+after_fork do |server, worker|
+  stop = proc { puts 'Terminating web service'; Process.kill 'QUIT', Process.pid }
+  Signal.trap('TERM', &stop)
+  Signal.trap('INT', &stop)
+
+  # Replace with MongoDB or whatever
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+    Rails.logger.info('Connected to ActiveRecord')
+  end
+end

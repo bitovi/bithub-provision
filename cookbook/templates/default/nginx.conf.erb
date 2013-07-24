@@ -6,10 +6,10 @@ server {
 	error_log  /var/log/nginx/bithub.dev.error.log;
 
 	index index.html index.htm;
-	root /vagrant/client/;
+	root <%= node[:bithub][:webserver][:document_root] %>;
 	
 	location ~ /(api|admin) {
-		proxy_pass http://unix:/vagrant/web/tmp/sockets/unicorn.sock;
+		proxy_pass http://unix:<%= node[:bithub][:backend][:socket] %>;
 		proxy_set_header Host $host;
 		proxy_redirect off;
 	}
