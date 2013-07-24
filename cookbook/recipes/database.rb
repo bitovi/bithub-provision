@@ -17,8 +17,8 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-postgresql_database_user node['bithub']['database']['username'] do
-  connection postgresql_connection_info
+postgresql_user node['bithub']['database']['username'] do
   password node['bithub']['database']['password']
-  action :create
+  privileges :superuser => true, :createdb => true, :inherit => true, :login => true
 end
+
