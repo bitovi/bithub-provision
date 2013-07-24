@@ -1,5 +1,5 @@
-bithub-provision
-================
+Bithub provisioning
+===================
 
 Make a root Bithub folder, eg.
 ```
