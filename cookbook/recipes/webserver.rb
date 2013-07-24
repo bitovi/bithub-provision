@@ -9,4 +9,6 @@ nginx_site "bithub.dev.conf" do
   enable true
 end
 
-
+nginx_site "default" do
+  enable false
+end
