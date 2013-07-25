@@ -31,7 +31,7 @@ default[:bithub][:database][:password] = 'negativ1Q'
 default[:bithub][:database][:dbname] = 'bithub_development'
 
 # Langs - ruby
-default[:bithub][:pls][:ruby_version] = '1.9.3-p392'
+default[:bithub][:langs][:ruby_version] = '1.9.3-p392'
 
 # Apps
 default[:bithub][:root_dir] = "/vagrant"
