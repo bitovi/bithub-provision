@@ -21,7 +21,7 @@ default[:bithub][:backend][:log] = "/var/log/unicorn.log"
 default[:bithub][:broker][:host] = 'localhost'
 default[:bithub][:broker][:username] = 'bithub'
 default[:bithub][:broker][:password] = 'Ei7PhaaH'
-default[:bithub][:broker][:vhost] = '/bithub'
+default[:bithub][:broker][:vhost] = 'bithub'
 
 # Database - postgresql
 default[:bithub][:database][:host] = 'localhost'
