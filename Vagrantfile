@@ -14,9 +14,8 @@ Vagrant.configure("2") do |config|
   
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      postgresql: {
-        password: { postgres: "iloverandompasswordsbutthiswilldo" }
-      }
+      postgresql: { password: { postgres: "iloverandompasswordsbutthiswilldo" } },
+      build_essential: { compiletime: true }
     }
     chef.add_recipe 'bithub'
   end
