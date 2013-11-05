@@ -4,11 +4,11 @@ if platform?("ubuntu", "debian")
   end
 
   execute :update_locale do
+    command "export LANG=#{node[:locale][:lang]}"
     command "export LANGUAGE=#{node[:locale][:lang]}"
-    command "export LANG=#{node[:locale][:language]}"
     command "export LC_ALL=#{node[:locale][:lc_all]}"
-    command "locale-gen"
-    command "update-locale LANGUAGE=#{node[:locale][:language]} LANG=#{node[:locale][:lang]} LC_ALL=#{node[:locale][:lc_all]}"
+    command "locale-gen #{node[:locale][:lang]}"
+    command "update-locale LANG=#{node[:locale][:lang]} LC_ALL=#{node[:locale][:lc_all]}"
     command "sudo dpkg-reconfigure locales"
   end
 

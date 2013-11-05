@@ -6,7 +6,7 @@ Make a root Bithub folder, eg.
 mkdir ~/projects/bithub
 ```
 
-Clone all the subprojects to the root/subproject_name, eg.
+Under it, clone all the subprojects:
 ```
 git clone git@github.com:bitovi/bithub.git ~/projects/bithub/web
 git clone git@github.com:bitovi/bithub-client.git ~/projects/bithub/client
@@ -20,12 +20,12 @@ git clone git@github.com:bitovi/bithub-liveservice.git ~/projects/bithub/liveser
 
 Install Vagrant : http://downloads.vagrantup.com
 
-Install Vagrant Omnibus plugin:
+Install Vagrant Omnibus plugin from the console:
 ```
 vagrant plugin install vagrant-omnibus
 ```
 
-Install Vagrant Berks plugin:
+Install Vagrant Berks plugin from the console:
 ```
 vagrant plugin install vagrant-berkshelf
 ```

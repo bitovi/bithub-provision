@@ -4,8 +4,8 @@ template node[:bithub][:backend][:config] do
 end
 
 file "/var/log/unicorn.log" do
-  owner "vagrant"
-  group "vagrant"
+  owner node[:bithub][:user]
+  group node[:bithub][:group]
   mode "0666"
   action :create
 end

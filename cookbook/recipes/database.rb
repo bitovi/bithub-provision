@@ -5,10 +5,16 @@ include_recipe "database::postgresql"
 
 node.set['postgresql']['version'] = '9.1'
 node.set['postgresql']['config']['listen_addresses'] = '*'
+
+node.set['postgresql']['contrib']['extensions'] = [
+  "hstore",
+  "intarray",
+]
+
 node.set['postgresql']['pg_hba'] = [
   { :type => 'local' , :db => 'all' , :user => 'all' , :addr => nil            , :method => 'trust'} ,
   { :type => 'host'  , :db => 'all' , :user => 'all' , :addr => '127.0.0.1/32' , :method => 'trust'} ,
-  { :type => 'host'  , :db => 'all' , :user => 'all' , :addr => '0.0.0.0/0'    , :method => 'md5'}
+  { :type => 'host'  , :db => 'all' , :user => 'all' , :addr => '::1/128'      , :method => 'trust'} ,
 ]
 
 postgresql_connection_info = {
