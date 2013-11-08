@@ -6,7 +6,7 @@
 # 
 # All rights reserved - Do Not Redistribute
 
-group node[:bithub][:user]
+group node[:bithub][:group]
 
 user node[:bithub][:user] do
   action :create
@@ -28,4 +28,4 @@ include_recipe "bithub::webserver"
 include_recipe "bithub::broker"
 include_recipe "bithub::unicorn"
 
-include_recipe "bithub::log_dir"
+include_recipe "bithub::groups_perms"

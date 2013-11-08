@@ -1,6 +1,5 @@
 default[:bithub][:user] = "bithub"
 default[:bithub][:group] = "bithub"
-default[:bithub][:name] = "bithub"
 
 # Locale
 default[:locale][:lang]= "en_US.UTF-8"
