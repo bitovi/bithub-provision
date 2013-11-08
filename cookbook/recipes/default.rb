@@ -27,3 +27,5 @@ include_recipe "bithub::tools"
 include_recipe "bithub::webserver"
 include_recipe "bithub::broker"
 include_recipe "bithub::unicorn"
+
+include_recipe "bithub::log_dir"
