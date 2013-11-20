@@ -1,10 +1,5 @@
-#
 # Cookbook Name:: bithub
 # Recipe:: default
-#
-# Copyright (C) 2013 Bitovi
-# 
-# All rights reserved - Do Not Redistribute
 
 group node[:bithub][:group]
 
@@ -17,6 +12,8 @@ user node[:bithub][:user] do
   supports :manage_home => true
 end
 
+
+include_recipe "build_essential"
 include_recipe "bithub::locale"
 include_recipe "bithub::database"
 
