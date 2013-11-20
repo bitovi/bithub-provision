@@ -13,7 +13,7 @@ user node[:bithub][:user] do
 end
 
 
-include_recipe "build_essential"
+include_recipe "build-essential"
 include_recipe "bithub::locale"
 include_recipe "bithub::database"
 
