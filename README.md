@@ -41,4 +41,24 @@ cd ~projects/bithub
 vagrant up
 ```
 
+From the bithub root folder run:
+```
+vagrant ssh
+```
+to connect to the machine
+
+Inside the machine:
+```
+cd /vagrant/web
+bundle install
+rbenv rehash
+sudo su
+su bithub
+cap prod db:pull
+foreman start
+```
+
+
+
+
 Author:: Nikica Jokic (<neektza@gmail.com>)
